@@ -100,10 +100,21 @@
   color: #f4fbff;
   font-weight: 700;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
 }
 
 .refresh:hover {
   filter: brightness(1.08);
+}
+
+.refresh:hover .refresh-icon {
+  transform: rotate(-25deg);
+}
+
+.refresh-icon {
+  transition: transform 160ms ease;
 }
 
 .health-row {
@@ -204,17 +215,32 @@
   transform: translateY(-1px);
 }
 
+.chip-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.34rem;
+}
+
+.chip-icon {
+  opacity: 0.95;
+}
+
 .chip-active {
   color: #fff;
   border-color: transparent;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
 }
 
 .chip-hn.chip-active {
+  border-color: rgba(255, 138, 56, 0.95);
   background: linear-gradient(135deg, #ff8d3a, #ff6a00);
+  box-shadow: 0 0 0 2px rgba(255, 120, 38, 0.28), 0 0 20px rgba(255, 125, 33, 0.22);
 }
 
 .chip-reddit.chip-active {
+  border-color: rgba(255, 98, 52, 0.95);
   background: linear-gradient(135deg, #ff6b35, #ff4500);
+  box-shadow: 0 0 0 2px rgba(255, 83, 24, 0.26), 0 0 20px rgba(255, 69, 0, 0.23);
 }
 
 .chip-github.chip-active {
@@ -233,7 +259,9 @@
 }
 
 .chip-arxiv.chip-active {
+  border-color: rgba(96, 191, 255, 0.95);
   background: linear-gradient(135deg, #2b85d3, #5bc2ff);
+  box-shadow: 0 0 0 2px rgba(83, 180, 255, 0.24), 0 0 20px rgba(83, 180, 255, 0.2);
 }
 
 .sort-select {
@@ -242,6 +270,12 @@
   gap: 0.4rem;
   font-size: 0.85rem;
   color: var(--muted);
+}
+
+.sort-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
 }
 
 .sort-select select {

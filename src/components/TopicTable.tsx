@@ -1,4 +1,6 @@
 import type { SortMode, Source, Topic } from "../domain/types";
+import { ArrowUpDown, BookText, Github, MessageCircle, Newspaper } from "lucide-react";
+import type { ComponentType } from "react";
 
 type Props = {
   topics: Topic[];
@@ -15,6 +17,13 @@ const SOURCE_LABELS: Record<Source, string> = {
   reddit: "Reddit",
   github: "GitHub",
   arxiv: "arXiv",
+};
+
+const SOURCE_ICONS: Record<Source, ComponentType<{ size?: number; className?: string }>> = {
+  hn: Newspaper,
+  reddit: MessageCircle,
+  github: Github,
+  arxiv: BookText,
 };
 
 function trendGlyph(trend: Topic["trend"]): string {
@@ -39,6 +48,7 @@ export function TopicTable({
           {Object.entries(SOURCE_LABELS).map(([source, label]) => {
             const castSource = source as Source;
             const selected = sourceFilter.has(castSource);
+            const Icon = SOURCE_ICONS[castSource];
             return (
               <button
                 key={source}
@@ -46,14 +56,20 @@ export function TopicTable({
                 className={`chip chip-${castSource} ${selected ? "chip-active" : ""}`}
                 onClick={() => onToggleSource(castSource)}
               >
-                {label}
+                <span className="chip-content">
+                  <Icon size={14} className="chip-icon" />
+                  <span>{label}</span>
+                </span>
               </button>
             );
           })}
         </div>
 
         <label className="sort-select" htmlFor="sort-mode">
-          <span>Sort:</span>
+          <span className="sort-label">
+            <ArrowUpDown size={14} />
+            <span>Sort:</span>
+          </span>
           <select
             id="sort-mode"
             value={sortMode}

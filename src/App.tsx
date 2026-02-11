@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { RefreshCcw } from "lucide-react";
 import "./App.css";
 import { TopicDetailPanel } from "./components/TopicDetailPanel";
 import { TopicTable } from "./components/TopicTable";
@@ -134,7 +135,8 @@ function App() {
             Last updated: <strong>{lastUpdated ? LAST_UPDATED_FORMATTER.format(lastUpdated) : "-"}</strong>
           </p>
           <button type="button" className="refresh" onClick={() => void refreshData()}>
-            Refresh now
+            <RefreshCcw size={14} className="refresh-icon" />
+            <span>Refresh now</span>
           </button>
         </div>
       </header>
