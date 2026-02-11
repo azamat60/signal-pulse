@@ -1,0 +1,22 @@
+{
+  "name": "Signal Pulse Dashboard",
+  "short_name": "Signal Pulse",
+  "description": "Real-time technology trend monitoring from Hacker News, Reddit, GitHub, and arXiv.",
+  "start_url": "/signal-pulse/",
+  "scope": "/signal-pulse/",
+  "display": "standalone",
+  "background_color": "#070b12",
+  "theme_color": "#070b12",
+  "icons": [
+    {
+      "src": "/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
