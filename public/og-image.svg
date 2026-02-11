@@ -1,0 +1,53 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="40" y1="20" x2="1110" y2="620" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#090E17"/>
+      <stop offset="1" stop-color="#13243D"/>
+    </linearGradient>
+    <linearGradient id="pillA" x1="100" y1="0" x2="240" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF933B"/>
+      <stop offset="1" stop-color="#FF6A00"/>
+    </linearGradient>
+    <linearGradient id="pillB" x1="300" y1="0" x2="440" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF6B35"/>
+      <stop offset="1" stop-color="#FF4500"/>
+    </linearGradient>
+    <linearGradient id="pillC" x1="500" y1="0" x2="640" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0D1117"/>
+      <stop offset="1" stop-color="#23314A"/>
+    </linearGradient>
+    <linearGradient id="pillD" x1="700" y1="0" x2="840" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2B85D3"/>
+      <stop offset="1" stop-color="#5BC2FF"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1090" cy="92" r="210" fill="#FF4500" fill-opacity="0.12"/>
+  <circle cx="120" cy="550" r="170" fill="#53B4FF" fill-opacity="0.16"/>
+
+  <text x="84" y="172" fill="#EEF6FF" font-size="68" font-family="Arial, sans-serif" font-weight="700">
+    Signal Pulse Dashboard
+  </text>
+  <text x="84" y="228" fill="#AFC1DA" font-size="32" font-family="Arial, sans-serif">
+    Real-time technology trend monitoring
+  </text>
+
+  <g transform="translate(84 292)">
+    <rect width="150" height="60" rx="30" fill="url(#pillA)"/>
+    <text x="75" y="39" text-anchor="middle" fill="#FFFFFF" font-size="28" font-family="Arial, sans-serif" font-weight="700">HN</text>
+
+    <rect x="170" width="180" height="60" rx="30" fill="url(#pillB)"/>
+    <text x="260" y="39" text-anchor="middle" fill="#FFFFFF" font-size="28" font-family="Arial, sans-serif" font-weight="700">Reddit</text>
+
+    <rect x="370" width="180" height="60" rx="30" fill="url(#pillC)"/>
+    <text x="460" y="39" text-anchor="middle" fill="#FFFFFF" font-size="28" font-family="Arial, sans-serif" font-weight="700">GitHub</text>
+
+    <rect x="570" width="170" height="60" rx="30" fill="url(#pillD)"/>
+    <text x="655" y="39" text-anchor="middle" fill="#FFFFFF" font-size="28" font-family="Arial, sans-serif" font-weight="700">arXiv</text>
+  </g>
+
+  <text x="84" y="540" fill="#C4D7F2" font-size="26" font-family="Arial, sans-serif">
+    Created by Azamat Altymyshev
+  </text>
+</svg>
