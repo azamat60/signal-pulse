@@ -32,6 +32,7 @@ export function TopicDetailPanel({ topic }: Props) {
   }
 
   const maxCount = maxTimelineCount(topic);
+  const maxBreakdown = Math.max(...topic.sources.map((s) => topic.sourceBreakdown[s]), 1);
 
   return (
     <aside className="detail-panel">
@@ -43,12 +44,22 @@ export function TopicDetailPanel({ topic }: Props) {
       <section className="detail-block">
         <h3>Source breakdown</h3>
         <div className="source-breakdown">
-          {topic.sources.map((source) => (
-            <div key={`${topic.id}-${source}-score`} className={`source-${source}`}>
-              <span className={`source-tag source-${source}`}>{SOURCE_LABELS[source]}</span>
-              <strong>{topic.sourceBreakdown[source].toFixed(1)}</strong>
-            </div>
-          ))}
+          {topic.sources.map((source) => {
+            const val = topic.sourceBreakdown[source];
+            const pct = Math.round((val / maxBreakdown) * 100);
+            return (
+              <div key={`${topic.id}-${source}-score`} className="source-breakdown-row">
+                <span className={`source-tag source-${source}`}>{SOURCE_LABELS[source]}</span>
+                <div className="source-breakdown-bar-wrap">
+                  <div
+                    className={`source-breakdown-bar source-${source}`}
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
+                <span className="source-breakdown-value">{val.toFixed(1)}</span>
+              </div>
+            );
+          })}
         </div>
       </section>
 

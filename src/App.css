@@ -3,171 +3,251 @@
   --bg-1: #0d1422;
   --bg-2: #131d30;
   --ink: #eff6ff;
-  --muted: #9baac1;
-  --line: #27364f;
-  --line-soft: #1b273a;
-  --panel: rgba(12, 20, 33, 0.82);
-  --panel-strong: rgba(9, 15, 26, 0.96);
+  --muted: #7a8fa8;
+  --line: #1e2e44;
+  --line-soft: #161f2e;
+  --panel: rgba(11, 18, 30, 0.88);
+  --panel-strong: rgba(8, 13, 22, 0.96);
   --accent: #53b4ff;
   --good: #28d28f;
   --bad: #ff6666;
 
   --hn: #ff7d21;
-  --hn-soft: rgba(255, 125, 33, 0.2);
+  --hn-soft: rgba(255, 125, 33, 0.15);
   --reddit: #ff4500;
-  --reddit-soft: rgba(255, 69, 0, 0.2);
+  --reddit-soft: rgba(255, 69, 0, 0.15);
   --github: #0f141d;
-  --github-soft: rgba(200, 219, 255, 0.2);
+  --github-soft: rgba(200, 219, 255, 0.12);
   --arxiv: #53b4ff;
-  --arxiv-soft: rgba(83, 180, 255, 0.2);
+  --arxiv-soft: rgba(83, 180, 255, 0.15);
 
   min-height: 100vh;
   color: var(--ink);
   padding: 1.2rem 1.4rem 1.6rem;
   background:
-    radial-gradient(circle at 10% 12%, rgba(255, 69, 0, 0.16), transparent 34%),
-    radial-gradient(circle at 90% 6%, rgba(255, 125, 33, 0.14), transparent 33%),
-    radial-gradient(circle at 84% 90%, rgba(83, 180, 255, 0.2), transparent 40%),
-    linear-gradient(160deg, var(--bg-0), var(--bg-1) 42%, var(--bg-2));
+    radial-gradient(ellipse at 8% 10%, rgba(255, 69, 0, 0.1), transparent 30%),
+    radial-gradient(ellipse at 92% 5%, rgba(255, 125, 33, 0.09), transparent 28%),
+    radial-gradient(ellipse at 80% 95%, rgba(83, 180, 255, 0.12), transparent 36%),
+    linear-gradient(160deg, var(--bg-0) 0%, var(--bg-1) 45%, var(--bg-2) 100%);
 }
 
+/* ─── Scrollbar ─────────────────────────────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1e2e44 transparent;
+}
+*::-webkit-scrollbar { width: 5px; height: 5px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: #1e2e44; border-radius: 999px; }
+*::-webkit-scrollbar-thumb:hover { background: #2d4468; }
+
+/* ─── Live pulse ────────────────────────────────────────────── */
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(40, 210, 143, 0.6); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(40, 210, 143, 0); }
+}
+
+.live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--good);
+  animation: pulse-live 2s ease-in-out infinite;
+  vertical-align: middle;
+  margin-right: 0.4rem;
+}
+
+/* ─── Topbar ────────────────────────────────────────────────── */
 .topbar {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1.2rem;
-  padding: 1rem 1.1rem;
+  gap: 1.4rem;
+  padding: 1.1rem 1.3rem;
   border: 1px solid var(--line);
+  border-top: 2px solid rgba(83, 180, 255, 0.35);
   border-radius: 16px;
-  background: linear-gradient(165deg, rgba(23, 35, 57, 0.95), rgba(11, 19, 30, 0.88));
-  box-shadow: 0 10px 26px rgba(3, 8, 14, 0.42);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(165deg, rgba(18, 28, 48, 0.97), rgba(10, 17, 28, 0.95));
+  box-shadow:
+    0 12px 32px rgba(2, 6, 12, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
 }
 
 .eyebrow {
   margin: 0;
-  font-size: 0.74rem;
-  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--accent);
   font-weight: 700;
+  display: flex;
+  align-items: center;
 }
 
 .topbar h1 {
-  margin: 0.2rem 0;
-  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
-  letter-spacing: -0.03em;
+  margin: 0.22rem 0 0.1rem;
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #f0f8ff 0%, #a8d4f8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .subline {
   margin: 0;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
 .top-author {
-  margin: 0.34rem 0 0;
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
+  margin: 0.4rem 0 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #b5c7e2;
-  opacity: 0.9;
+  color: #556880;
+  font-weight: 600;
 }
 
 .meta {
-  min-width: 240px;
-  display: grid;
-  gap: 0.25rem;
-  justify-items: end;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.18rem;
 }
 
-.meta p {
-  margin: 0;
-  font-size: 0.88rem;
-  color: var(--muted);
+.meta-stats {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 0.3rem;
 }
 
-.meta strong {
+.meta-stat {
+  text-align: right;
+}
+
+.meta-stat-label {
+  display: block;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4a6080;
+  font-weight: 600;
+  margin-bottom: 0.1rem;
+}
+
+.meta-stat-value {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 800;
   color: var(--ink);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.meta-updated {
+  font-size: 0.76rem;
+  color: #4a6080;
+  margin-bottom: 0.5rem;
+}
+
+.meta-updated strong {
+  color: #7a9ec0;
 }
 
 .refresh {
-  margin-top: 0.35rem;
-  border: 1px solid #3f5e8e;
+  border: 1px solid rgba(83, 180, 255, 0.3);
   border-radius: 10px;
-  padding: 0.45rem 0.8rem;
-  background: linear-gradient(135deg, #18609f, #2f9ef5);
-  color: #f4fbff;
+  padding: 0.42rem 0.85rem;
+  background: linear-gradient(135deg, rgba(24, 72, 128, 0.8), rgba(47, 142, 245, 0.7));
+  color: #ddf0ff;
   font-weight: 700;
+  font-size: 0.82rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 0.42rem;
+  transition: filter 140ms, border-color 140ms;
+  letter-spacing: 0.02em;
 }
 
 .refresh:hover {
-  filter: brightness(1.08);
+  filter: brightness(1.12);
+  border-color: rgba(83, 180, 255, 0.55);
 }
 
 .refresh:hover .refresh-icon {
-  transform: rotate(-25deg);
+  transform: rotate(-30deg);
 }
 
 .refresh-icon {
-  transition: transform 160ms ease;
+  transition: transform 200ms ease;
 }
 
+/* ─── Health row ────────────────────────────────────────────── */
 .health-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0.8rem 0;
+  gap: 0.45rem;
+  margin: 0.75rem 0;
 }
 
 .health-pill {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.45rem;
   border-radius: 999px;
-  padding: 0.32rem 0.7rem;
+  padding: 0.28rem 0.72rem 0.28rem 0.55rem;
   border: 1px solid var(--line);
-  font-size: 0.78rem;
-  background: rgba(14, 24, 38, 0.8);
+  font-size: 0.76rem;
+  font-weight: 600;
+  background: rgba(12, 20, 32, 0.9);
+  letter-spacing: 0.01em;
 }
 
-.health-ok {
-  color: var(--good);
+.health-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
+.health-ok .health-dot { background: var(--good); box-shadow: 0 0 5px rgba(40, 210, 143, 0.6); }
+.health-ok { color: #c5efe0; }
+
+.health-fail .health-dot { background: var(--bad); box-shadow: 0 0 5px rgba(255, 102, 102, 0.6); }
 .health-fail {
-  color: var(--bad);
+  border-color: rgba(255, 102, 102, 0.4);
+  background: rgba(60, 14, 20, 0.85);
+  color: #ffaaaa;
 }
 
-.health-pill.health-fail {
-  border-color: rgba(255, 102, 102, 0.6);
-  background: rgba(75, 19, 26, 0.8);
-  color: #ff9f9f;
-}
-
+/* ─── Banners ───────────────────────────────────────────────── */
 .banner {
   margin: 0.4rem 0 0.9rem;
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 0.45rem 0.7rem;
-  font-size: 0.86rem;
+  font-size: 0.85rem;
   color: var(--muted);
   background: rgba(11, 19, 31, 0.84);
 }
 
 .banner-error {
-  border-color: rgba(255, 102, 102, 0.45);
-  color: #ff8585;
+  border-color: rgba(255, 102, 102, 0.4);
+  color: #ff9090;
+  background: rgba(50, 10, 14, 0.7);
 }
 
+/* ─── Content grid ──────────────────────────────────────────── */
 .content-grid {
   display: grid;
-  grid-template-columns: minmax(620px, 1fr) minmax(320px, 390px);
-  gap: 0.9rem;
+  grid-template-columns: minmax(600px, 1fr) minmax(310px, 380px);
+  gap: 0.85rem;
 }
 
 .topic-section,
@@ -175,15 +255,18 @@
   border: 1px solid var(--line);
   border-radius: 16px;
   background: var(--panel);
-  box-shadow: inset 0 1px 0 rgba(196, 222, 255, 0.04);
+  box-shadow:
+    inset 0 1px 0 rgba(196, 222, 255, 0.03),
+    0 4px 20px rgba(2, 6, 14, 0.3);
   min-height: 72vh;
 }
 
+/* ─── Topic section ─────────────────────────────────────────── */
 .topic-section {
   padding: 0.75rem;
   display: grid;
   align-content: start;
-  gap: 0.65rem;
+  gap: 0.6rem;
 }
 
 .toolbar {
@@ -196,96 +279,94 @@
 .source-filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.36rem;
+  gap: 0.32rem;
 }
 
 .chip {
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 0.3rem 0.62rem;
-  background: #101a2a;
-  color: #d7e4f5;
+  padding: 0.28rem 0.65rem;
+  background: #0c1525;
+  color: #9ab0cc;
   cursor: pointer;
   font-weight: 700;
-  font-size: 0.76rem;
-  transition: transform 140ms ease, border-color 140ms ease, color 140ms ease;
+  font-size: 0.74rem;
+  letter-spacing: 0.02em;
+  transition: transform 130ms ease, border-color 130ms ease, color 130ms ease, box-shadow 130ms ease;
 }
 
 .chip:hover {
   transform: translateY(-1px);
+  border-color: #2d4468;
 }
 
 .chip-content {
   display: inline-flex;
   align-items: center;
-  gap: 0.34rem;
+  gap: 0.32rem;
 }
 
-.chip-icon {
-  opacity: 0.95;
-}
+.chip-icon { opacity: 0.9; }
 
-.chip-active {
-  color: #fff;
-  border-color: transparent;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
-}
+.chip-active { color: #fff; border-color: transparent; }
 
 .chip-hn.chip-active {
-  border-color: rgba(255, 138, 56, 0.95);
-  background: linear-gradient(135deg, #ff8d3a, #ff6a00);
-  box-shadow: 0 0 0 2px rgba(255, 120, 38, 0.28), 0 0 20px rgba(255, 125, 33, 0.22);
+  border-color: rgba(255, 138, 56, 0.9);
+  background: linear-gradient(135deg, #e87832, #ff6a00);
+  box-shadow: 0 0 0 2px rgba(255, 120, 38, 0.25), 0 2px 14px rgba(255, 125, 33, 0.28);
 }
 
 .chip-reddit.chip-active {
-  border-color: rgba(255, 98, 52, 0.95);
-  background: linear-gradient(135deg, #ff6b35, #ff4500);
-  box-shadow: 0 0 0 2px rgba(255, 83, 24, 0.26), 0 0 20px rgba(255, 69, 0, 0.23);
+  border-color: rgba(255, 98, 52, 0.9);
+  background: linear-gradient(135deg, #e85e28, #ff4500);
+  box-shadow: 0 0 0 2px rgba(255, 83, 24, 0.22), 0 2px 14px rgba(255, 69, 0, 0.28);
 }
 
 .chip-github.chip-active {
-  border-color: #9fc4ff;
-  background: linear-gradient(135deg, #0b0f14, #172338);
-  color: #f5f9ff;
-  box-shadow:
-    0 0 0 2px rgba(159, 196, 255, 0.26),
-    0 0 20px rgba(159, 196, 255, 0.18);
+  border-color: #8ab4e8;
+  background: linear-gradient(135deg, #0e1522, #162238);
+  color: #e8f2ff;
+  box-shadow: 0 0 0 2px rgba(138, 180, 232, 0.22), 0 2px 14px rgba(159, 196, 255, 0.18);
 }
 
 .chip-github:not(.chip-active) {
-  border-color: #3b4f70;
-  background: #0a1322;
-  color: #aab8ce;
+  border-color: #2a3c57;
+  background: #090f19;
+  color: #8a9dba;
 }
 
 .chip-arxiv.chip-active {
-  border-color: rgba(96, 191, 255, 0.95);
-  background: linear-gradient(135deg, #2b85d3, #5bc2ff);
-  box-shadow: 0 0 0 2px rgba(83, 180, 255, 0.24), 0 0 20px rgba(83, 180, 255, 0.2);
+  border-color: rgba(96, 191, 255, 0.9);
+  background: linear-gradient(135deg, #1e72c2, #53b4ff);
+  box-shadow: 0 0 0 2px rgba(83, 180, 255, 0.2), 0 2px 14px rgba(83, 180, 255, 0.25);
 }
 
 .sort-select {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--muted);
+  white-space: nowrap;
 }
 
 .sort-label {
   display: inline-flex;
   align-items: center;
-  gap: 0.28rem;
+  gap: 0.26rem;
 }
 
 .sort-select select {
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 0.3rem;
-  background: #0f1829;
+  padding: 0.28rem 0.5rem;
+  background: #0c1525;
   color: var(--ink);
+  font-size: 0.82rem;
+  cursor: pointer;
 }
 
+/* ─── Topic table ───────────────────────────────────────────── */
 .topic-table {
   border: 1px solid var(--line);
   border-radius: 12px;
@@ -296,18 +377,18 @@
 .topic-head,
 .topic-row {
   display: grid;
-  grid-template-columns: minmax(200px, 2fr) 88px 88px minmax(170px, 1.2fr) 56px;
-  gap: 0.6rem;
+  grid-template-columns: 30px minmax(180px, 2fr) 76px 76px minmax(148px, 1.1fr) 48px;
+  gap: 0.55rem;
   align-items: center;
-  padding: 0.58rem 0.68rem;
+  padding: 0.55rem 0.7rem;
 }
 
 .topic-head {
-  font-size: 0.76rem;
-  color: #95aac6;
+  font-size: 0.7rem;
+  color: #4e6a8a;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
   border-bottom: 1px solid var(--line);
 }
 
@@ -315,204 +396,282 @@
   width: 100%;
   border: none;
   border-bottom: 1px solid var(--line-soft);
+  border-left: 2px solid transparent;
   background: transparent;
   color: var(--ink);
   text-align: left;
   cursor: pointer;
-  font-size: 0.87rem;
+  font-size: 0.86rem;
+  transition: background 120ms, border-color 120ms;
+}
+
+.topic-row:last-child {
+  border-bottom: none;
 }
 
 .topic-row:hover,
 .topic-row:focus-visible {
-  background: rgba(83, 180, 255, 0.09);
+  background: rgba(83, 180, 255, 0.07);
+  border-left-color: rgba(83, 180, 255, 0.25);
   outline: none;
 }
 
 .topic-row-active {
-  background: linear-gradient(90deg, rgba(83, 180, 255, 0.18), rgba(83, 180, 255, 0.06));
+  background: linear-gradient(90deg, rgba(83, 180, 255, 0.14), rgba(83, 180, 255, 0.04));
+  border-left-color: var(--accent) !important;
+}
+
+.topic-rank {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #354d6a;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  padding-right: 2px;
+}
+
+.topic-row-active .topic-rank {
+  color: rgba(83, 180, 255, 0.55);
 }
 
 .topic-label {
   font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
+/* ─── Source badges ─────────────────────────────────────────── */
 .source-badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.26rem;
+  gap: 0.22rem;
 }
 
 .source-badge {
-  font-size: 0.66rem;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 0.16rem 0.42rem;
-  color: #ebf2ff;
-  background: #15233a;
-}
-
-.trend {
-  font-size: 1.06rem;
+  font-size: 0.64rem;
   font-weight: 700;
+  border-radius: 4px;
+  padding: 0.14rem 0.38rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-.trend-up,
-.growth-up {
-  color: var(--good);
+.source-badge.source-hn    { background: rgba(255, 125, 33, 0.18); color: #ffb272; border: 1px solid rgba(255, 125, 33, 0.3); }
+.source-badge.source-reddit { background: rgba(255, 69, 0, 0.16);  color: #ff9c72; border: 1px solid rgba(255, 69, 0, 0.28); }
+.source-badge.source-github { background: rgba(180, 210, 255, 0.1); color: #9bbfe0; border: 1px solid rgba(180, 210, 255, 0.22); }
+.source-badge.source-arxiv  { background: rgba(83, 180, 255, 0.14); color: #7ec9ff; border: 1px solid rgba(83, 180, 255, 0.28); }
+
+/* ─── Trend indicator ───────────────────────────────────────── */
+.trend {
+  font-size: 1rem;
+  font-weight: 800;
+  text-align: center;
 }
 
-.trend-down,
-.growth-down {
-  color: var(--bad);
-}
+.trend-up   { color: var(--good); text-shadow: 0 0 8px rgba(40, 210, 143, 0.5); }
+.trend-down { color: var(--bad);  text-shadow: 0 0 8px rgba(255, 102, 102, 0.5); }
+.trend-flat { color: #354d6a; }
+
+.growth-up   { color: var(--good); }
+.growth-down { color: var(--bad); }
 
 .empty-state {
   margin: 0;
-  padding: 1rem;
+  padding: 1.2rem 1rem;
   color: var(--muted);
+  font-size: 0.86rem;
 }
 
+/* ─── Detail panel ──────────────────────────────────────────── */
 .detail-panel {
-  padding: 0.8rem 0.82rem;
+  padding: 0.9rem 0.95rem;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .detail-empty {
   display: grid;
   place-items: center;
   color: var(--muted);
+  font-size: 0.88rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.detail-panel header {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 0.1rem;
 }
 
 .detail-panel header h2 {
   margin: 0;
-  font-size: 1.35rem;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
 }
 
 .detail-panel header p {
-  margin: 0.25rem 0 0;
+  margin: 0.2rem 0 0;
   color: var(--muted);
-  font-size: 0.84rem;
+  font-size: 0.8rem;
 }
 
 .detail-block {
-  margin-top: 0.9rem;
+  margin-top: 1rem;
 }
 
 .detail-block h3 {
-  margin: 0 0 0.45rem;
-  font-size: 0.85rem;
+  margin: 0 0 0.55rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
+  letter-spacing: 0.1em;
+  color: #354d6a;
+  font-weight: 700;
 }
 
+/* ─── Source breakdown ──────────────────────────────────────── */
 .source-breakdown {
   display: grid;
-  gap: 0.35rem;
+  gap: 0.4rem;
 }
 
-.source-breakdown div {
+.source-breakdown-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-size: 0.85rem;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 0.33rem 0.44rem;
-  background: #111b2e;
+  gap: 0.5rem;
 }
 
-.source-tag {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border: 1px solid transparent;
+.source-breakdown-bar-wrap {
+  flex: 1;
+  height: 6px;
   border-radius: 999px;
-  padding: 0.1rem 0.35rem;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
 }
 
+.source-breakdown-bar {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 400ms ease;
+}
+
+.source-breakdown-bar.source-hn     { background: linear-gradient(90deg, #c85c00, #ff8c38); }
+.source-breakdown-bar.source-reddit { background: linear-gradient(90deg, #c23200, #ff6030); }
+.source-breakdown-bar.source-github { background: linear-gradient(90deg, #3a5e90, #88b8e8); }
+.source-breakdown-bar.source-arxiv  { background: linear-gradient(90deg, #1a68c0, #62caff); }
+
+.source-breakdown-value {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  min-width: 28px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Source tags (shared) ──────────────────────────────────── */
+.source-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  border-radius: 4px;
+  padding: 0.12rem 0.36rem;
+  flex-shrink: 0;
+}
+
+.source-hn     { border: 1px solid rgba(255, 125, 33, 0.4); background: rgba(255, 125, 33, 0.14); color: #ffb272; }
+.source-reddit { border: 1px solid rgba(255, 69, 0, 0.4);   background: rgba(255, 69, 0, 0.13);   color: #ff9c72; }
+.source-github { border: 1px solid rgba(180, 210, 255, 0.3); background: rgba(15, 20, 29, 0.9);   color: #9bbfe0; }
+.source-arxiv  { border: 1px solid rgba(83, 180, 255, 0.42); background: rgba(83, 180, 255, 0.12); color: #7ec9ff; }
+
+/* ─── Timeline ──────────────────────────────────────────────── */
 .timeline {
   display: grid;
-  gap: 0.3rem;
+  gap: 0.34rem;
 }
 
 .timeline-row {
   display: grid;
-  grid-template-columns: 96px minmax(0, 1fr) 24px;
-  gap: 0.4rem;
+  grid-template-columns: 112px minmax(0, 1fr) 22px;
+  gap: 0.42rem;
   align-items: center;
-  font-size: 0.74rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+  white-space: nowrap;
 }
 
 .timeline-bar-wrap {
   border: 1px solid var(--line);
   border-radius: 999px;
   overflow: hidden;
-  height: 8px;
-  background: #111a29;
+  height: 7px;
+  background: rgba(10, 16, 27, 0.8);
 }
 
 .timeline-bar {
   height: 100%;
-  background: linear-gradient(90deg, #ff7d21, #53b4ff);
+  border-radius: 999px;
+  background: linear-gradient(90deg, #c85800, #ff8c35, #53b4ff);
+  box-shadow: 0 0 6px rgba(83, 180, 255, 0.3);
+  transition: width 400ms ease;
 }
 
+.timeline-row strong {
+  color: var(--ink);
+  font-size: 0.74rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Item list ─────────────────────────────────────────────── */
 .item-list {
   margin: 0;
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 0.42rem;
+  gap: 0.38rem;
 }
 
 .item-list li {
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 0.38rem 0.45rem;
+  padding: 0.4rem 0.48rem;
   display: grid;
-  gap: 0.12rem;
-  background: #101b2d;
+  gap: 0.14rem;
+  background: rgba(10, 16, 27, 0.7);
+  transition: border-color 120ms, background 120ms;
+}
+
+.item-list li:hover {
+  border-color: #2d4468;
+  background: rgba(14, 22, 36, 0.9);
 }
 
 .item-list a {
-  color: #e5f0ff;
-  font-size: 0.85rem;
+  color: #cce4ff;
+  font-size: 0.83rem;
   text-decoration: none;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .item-list a:hover {
+  color: #e8f3ff;
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .item-list span {
-  color: var(--muted);
-  font-size: 0.74rem;
+  color: #3d5572;
+  font-size: 0.7rem;
 }
 
-.source-hn {
-  border-color: rgba(255, 125, 33, 0.55);
-  background: var(--hn-soft);
-  color: #ffc18c;
-}
-
-.source-reddit {
-  border-color: rgba(255, 69, 0, 0.6);
-  background: var(--reddit-soft);
-  color: #ffb089;
-}
-
-.source-github {
-  border-color: rgba(197, 219, 255, 0.44);
-  background: rgba(15, 20, 29, 0.92);
-  color: #d5e2ff;
-}
-
-.source-arxiv {
-  border-color: rgba(83, 180, 255, 0.58);
-  background: var(--arxiv-soft);
-  color: #bee4ff;
-}
-
+/* ─── Responsive ────────────────────────────────────────────── */
 @media (max-width: 1120px) {
   .content-grid {
     grid-template-columns: 1fr;
@@ -525,13 +684,13 @@
 
   .topic-head,
   .topic-row {
-    grid-template-columns: minmax(170px, 2fr) 70px 70px minmax(104px, 1fr) 42px;
+    grid-template-columns: 28px minmax(150px, 2fr) 64px 64px minmax(100px, 1fr) 40px;
   }
 }
 
 @media (max-width: 700px) {
   .dashboard {
-    padding: 0.8rem;
+    padding: 0.7rem;
   }
 
   .topbar {
@@ -539,8 +698,12 @@
   }
 
   .meta {
-    justify-items: start;
+    align-items: flex-start;
     min-width: unset;
+  }
+
+  .meta-stats {
+    justify-content: flex-start;
   }
 
   .toolbar {
@@ -550,9 +713,9 @@
 
   .topic-head,
   .topic-row {
-    grid-template-columns: minmax(140px, 2fr) 64px 64px minmax(90px, 1fr) 34px;
-    gap: 0.34rem;
-    padding: 0.52rem;
-    font-size: 0.8rem;
+    grid-template-columns: 24px minmax(120px, 2fr) 56px 56px minmax(80px, 1fr) 32px;
+    gap: 0.3rem;
+    padding: 0.48rem 0.5rem;
+    font-size: 0.78rem;
   }
 }

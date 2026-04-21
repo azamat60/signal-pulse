@@ -116,7 +116,10 @@ function App() {
     <main className="dashboard">
       <header className="topbar">
         <div>
-          <p className="eyebrow">Realtime Internet Signals</p>
+          <p className="eyebrow">
+            <span className="live-dot" />
+            Realtime Internet Signals
+          </p>
           <h1>Signal Pulse Dashboard</h1>
           <p className="subline">
             Topic-first intelligence from Hacker News, Reddit, GitHub, and arXiv.
@@ -125,14 +128,18 @@ function App() {
         </div>
 
         <div className="meta">
-          <p>
-            Topics: <strong>{filteredTopics.length}</strong>
-          </p>
-          <p>
-            Items: <strong>{totalItems}</strong>
-          </p>
-          <p>
-            Last updated: <strong>{lastUpdated ? LAST_UPDATED_FORMATTER.format(lastUpdated) : "-"}</strong>
+          <div className="meta-stats">
+            <div className="meta-stat">
+              <span className="meta-stat-label">Topics</span>
+              <span className="meta-stat-value">{filteredTopics.length}</span>
+            </div>
+            <div className="meta-stat">
+              <span className="meta-stat-label">Items</span>
+              <span className="meta-stat-value">{totalItems}</span>
+            </div>
+          </div>
+          <p className="meta-updated">
+            Updated: <strong>{lastUpdated ? LAST_UPDATED_FORMATTER.format(lastUpdated) : "—"}</strong>
           </p>
           <button type="button" className="refresh" onClick={() => void refreshData()}>
             <RefreshCcw size={14} className="refresh-icon" />

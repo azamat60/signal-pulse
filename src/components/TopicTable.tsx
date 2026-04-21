@@ -84,6 +84,7 @@ export function TopicTable({
 
       <div className="topic-table" role="listbox" aria-label="Topics">
         <div className="topic-head">
+          <span>#</span>
           <span>Topic</span>
           <span>Score</span>
           <span>Growth</span>
@@ -91,13 +92,14 @@ export function TopicTable({
           <span>Trend</span>
         </div>
 
-        {topics.map((topic) => (
+        {topics.map((topic, index) => (
           <button
             key={topic.id}
             type="button"
             className={`topic-row ${activeTopicId === topic.id ? "topic-row-active" : ""}`}
             onClick={() => onSelect(topic.id)}
           >
+            <span className="topic-rank">{index + 1}</span>
             <span className="topic-label">{topic.label}</span>
             <span>{topic.score.toFixed(1)}</span>
             <span className={topic.growth > 0 ? "growth-up" : topic.growth < 0 ? "growth-down" : ""}>
