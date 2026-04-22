@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://azamat60.github.io/signal-pulse/sitemap.xml
+Sitemap: https://www.azamatdev.com/signal-pulse/sitemap.xml
